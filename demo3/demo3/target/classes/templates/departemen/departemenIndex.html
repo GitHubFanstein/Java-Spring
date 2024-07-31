@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test TH</title>
+</head>
+<body>
+    <a th:href="@{form2}">FORM</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each ="departemen : ${departemens}">
+                <td th:text = "${departemen.departementID}"></td>
+                <td th:text = "${departemen.departementName}"></td>
+                <td><a th:href="@{/departemen/delete/{id}(id=${departemen.departementID})}">Delete</a></td>
+                <td><a th:href="@{/departemen/edit/{id}(id=${departemen.departementID})}">Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+</body>
+</html>

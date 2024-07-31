@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Cuti</title>
+</head>
+<body>
+    <h1 th:text="${leave.leaveId == null ? 'Request Cuti' : 'Edit Cuti'}"></h1>
+    <form th:action="@{/leave/save}" th:object="${leave}" method="post">
+        <input type="hidden" th:field="*{leaveId}" />
+        <div>
+            <label for="employeeId">Employee ID:</label>
+            <input type="text" id="employeeId" th:field="*{employeeId}" required />
+
+            <label for="typeOfLeaveId">Type Of Leave:</label>
+            <select id="typeOfLeaveId" th:field="*{typeOfLeaveId}" required>
+                <option value="" disabled selected>Select Type of Leave</option>
+                <option th:each="leaveType : ${leaveTypes}"
+                        th:value="${leaveType.key}"
+                        th:text="${leaveType.value}"></option>
+            </select>
+
+            <label for="startDateLeave">Start Date Leave:</label>
+            <input type="date" id="startDateLeave" th:field="*{startDateLeave}" required />
+
+            <label for="endDateLeave">End Date Leave:</label>
+            <input type="date" id="endDateLeave" th:field="*{endDateLeave}" required />
+           
+            <label for="statusRequest">Status:</label>
+            <input type="text" id="statusRequest" th:field="*{statusRequest}" />
+
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}" required></textarea>
+
+            <label for="requestLeaveid">Request Leave:</label>
+            <input id="descriptionid" th:field="*{requestLeave}" required>
+
+            <label for="leaveBalanceId">Leave Balance ID:</label>
+            <input type="text" id="leaveBalanceId" th:field="*{leaveBalanceId}" />
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+    <div>
+        <a th:href="@{leave/Test}">Back to List</a>
+    </div>
+</body>
+</html>

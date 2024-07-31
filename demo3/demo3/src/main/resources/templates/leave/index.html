@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Daftar Cuti</title>
+</head>
+<body>
+<h1>Daftar Cuti</h1>
+<a th:href="@{create}">Buat Cuti Baru</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Employee ID</th>
+        <th>Type Of LEave ID</th>
+        <th>Start Date Leave</th>
+        <th>End Date Leave</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th>Request Leave</th>
+        <th>Leave Balanced ID</th>
+    </tr>
+    <tr th:each="leave : ${leaves}">
+        <td th:text="${leave.leaveId}"></td>
+        <td th:text="${leave.employeeId}"></td>
+        <td th:text="${leave.typeOfLeaveId}"></td>
+        <td th:text="${leave.startDateLeave}"></td>
+        <td th:text="${leave.endDateLeave}"></td>
+        <td th:text="${leave.statusRequest}"></td>
+        <td th:text="${leave.description}"></td>
+        <td th:text="${leave.requestLeave}"></td>
+        <td th:text="${leave.leaveBalanceId}"></td>
+        <td>
+            <a th:href="@{/leave/edit/{id}(id=${leave.leaveId})}">Edit</a>
+            <a th:href="@{/leave/delete/{id}(id=${leave.leaveId})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
